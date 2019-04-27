@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<h1 class="title">New command</h1>
+<form id="addCommand-form">
+    <div class="form-element">
+        <label for="command">Command: <i class="fa fa-info-circle pointer" aria-hidden="true" onclick="swal('Command')"></i></label>
+        <input type="text" id="command" class="command" name="command" value="" placeholder="Command">
+    </div>
+    <div class="form-element">
+        <label for="message">Message: <i class="fa fa-info-circle pointer" aria-hidden="true" onclick="swal('Reply')"></i></label>
+        <input type="text" id="message" class="message" name="message" value="" placeholder="Message">
+    </div>
+    <label class="checkbox-container">Embed
+        <input type="checkbox" id="embed">
+        <span class="checkmark"></span>
+    </label>
+    <div class="embed-fields"></div>
+    <button type="button" id="addCommand" class="disableOnRunning" onclick="handler.addCommand()">Add command</button>
+    <button type="button" class="add-embed-field" onclick="handler.addEmbedField()" disabled>Add field</button>
+    <button type="button" class="reset-embed-field" onclick="handler.resetEmbedFields()" disabled>Reset fields</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        handler.botStatus();
+    });
+
+    document.getElementById('embed').addEventListener('change', (event) => {
+        if (event.target.checked) {
+            $(".add-embed-field").prop("disabled", false);
+            $(".reset-embed-field").prop("disabled", false);
+            $("#message").prop("disabled", true);
+        } else {
+            $(".add-embed-field").prop("disabled", true);
+            $(".reset-embed-field").prop("disabled", true);
+            $("#message").prop("disabled", false);
+            $(".embed-fields").empty();
+        }
+    })
+</script>

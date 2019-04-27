@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<h1 class="title">Console</h1>
+<div id="console"></div>
+<form id="console-form" class="flex">
+    <input class="console-input" type="text" placeholder="Type here...">
+    <button type="submit" onclick="handler.consoleSubmit()" onsubmit="handler.consoleSubmit()">
+        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+    </button>
+</form>
+
+
+<script>
+    $(document).ready(function () {
+        handler.getConsole();
+        handler.botStatus();
+
+        $('#console').scrollTop($('#console')[0].scrollHeight);
+    });
+</script>

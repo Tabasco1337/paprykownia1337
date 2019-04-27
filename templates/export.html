@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<h1 class="title">Export</h1>
+
+<div class="flex export-guides">
+    <div>
+        <h3>Ubuntu setup:</h3>
+        <p>1. Install NodeJS (<button class="url-btn"
+                onclick="handler.openURL('https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04')">Guide</button>)
+        </p>
+        <p>2. Click at the "Export" button</p>
+        <p>3. Extract zip file</p>
+        <p>4. Run "npm install" in console</p>
+        <p>5. Run "npm start" in console</p>
+        <button class="primary-button exportBtn" onclick="handler.export(1)">Export</button>
+    </div>
+    <div>
+        <h3>Windows setup:</h3>
+        <p>1. Install NodeJS (<button class="url-btn"
+                onclick="handler.openURL('https://nodejs.org/en/download/')">Download
+                here</button>)</p>
+        <p>2. Click at the "Export" button</p>
+        <p>3. Extract zip file</p>
+        <p>4. Run "install.bat"</p>
+        <p>5. Run "start.bat"</p>
+        <button class="primary-button exportBtn" onclick="handler.export(2)">Export</button>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        handler.botStatus();
+    });
+</script>

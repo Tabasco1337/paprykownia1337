@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<h1 class="title">Commands</h1>
+<button class="primary-button disableOnRunning" onclick="templates.newCommand()">New command</button>
+<div id="commands-table">
+    <table class="commands-table">
+
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        handler.reloadCommandsList();
+        handler.botStatus();
+
+        // if (botRunning) {
+        //     $(".disableOnRunning").prop("disabled", true);
+        //     $(".disableOnRunning").prop("title", "Your bot is running");
+        //     $(".disableOnStopped").prop("disabled", false);
+        //     $(".disableOnStopped").prop("title", "");
+        // } else {
+        //     $(".disableOnRunning").prop("disabled", false);
+        //     $(".disableOnRunning").prop("title", "");
+        //     $(".disableOnStopped").prop("disabled", true);
+        //     $(".disableOnStopped").prop("title", "Your bot is not running");
+        // }
+    });
+</script>

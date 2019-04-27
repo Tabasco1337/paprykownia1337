@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<h1 class="title">Configurations</h1>
+<form id="configs-form">
+    <div class="form-element">
+        <label for="token">Discord application token:</label>
+        <input type="text" id="token" class="token" name="token" value="" placeholder="Token">
+    </div>
+    <div class="form-element">
+        <label for="token">Command prefix:</label>
+        <input type="text" id="prefix" class="prefix" name="prefix" value="" placeholder="Prefix">
+    </div>
+    <div class="form-element">
+        <label for="token">Game status:</label>
+        <input type="text" id="game-status" class="game-status" name="gamestatus" value="" placeholder="Game">
+    </div>
+    <div class="form-element">
+        <label for="token">Status type:</label>
+        <select id="status-type" class="status-type">
+            <option class="current" value=""></option>
+            <option disabled>──────────</option>
+            <option value="PLAYING">PLAYING</option>
+            <option value="WATCHING">WATCHING</option>
+            <option value="LISTENING">LISTENING</option>
+        </select>
+    </div>
+    <button type="button" id="save-configs" class="disableOnRunning" onclick="handler.saveConfigs()">Save</button>
+    <button type="button" onclick="handler.generateInviteLink()">Generate invite link</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+ 
+        fs.readFile(projectPath, function (err, content) {
+            if (err) throw err;
+            var obj = JSON.parse(content);
+            $("#configs-form #token").val(obj.token);
+            $("#configs-form #prefix").val(obj.prefix);
+            $("#configs-form #game-status").val(obj.gamestatus);
+            $("#status-type .current").val(obj.statustype);
+            $("#status-type .current").text(obj.statustype);
+
+            fs.writeFile(projectPath, JSON.stringify(obj), function (err) {
+                if (err) throw err;
+            });
+        });
+
+        handler.botStatus();
+    });
+</script>
